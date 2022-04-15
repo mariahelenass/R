@@ -1,0 +1,146 @@
+# Construção de um grafo a partir de uma matriz de adjacencia
+
+# Instalação da biblioteca 'igraph'
+
+install.packages('igraph')
+
+# Abrindo a biblioteca 'igraph'
+
+library(igraph)
+
+# Escolhendo o arquivo csv
+
+matriz1 <- read.table(row.names=1,file=file.choose(),header = TRUE,sep = ';')
+
+# Exibição da matriz de adjacencia
+
+matriz1
+
+# Ajuste de tabela para um formato de matriz
+
+matriz1 <- as.matrix(matriz1)
+
+# Criando um grafo a partir de uma matriz de adjacencia
+
+grafo1 <- graph.adjacency(matriz1, mode='undirected', weighted=TRUE)
+
+# Plotando o grafo na tela utilizando o comando tkplot
+
+tkplot(grafo1)
+
+# Fazendo o calculo do grau de um grafo
+
+degree(grafo1)
+
+# Fazendo o histograma da metrica - grau
+grau <- degree(grafo1)
+hist(grau)
+
+# Maior grau do grafo
+maiorGrau <-max(grau)
+maiorGrau
+
+# Obtendo o vertice de maior grau
+verticeDeMaiorGrau <- which(grau==maiorGrau)
+verticeDeMaiorGrau
+
+# Menor grau do grafo
+menorGrau <-min(grau)
+menorGrau
+
+# Obtendo o vertice de menor grau
+verticeDeMenorGrau <- which(grau==menorGrau)
+verticeDeMenorGrau
+
+# Fazendo o calculo de proximidade de um grafo
+closeness(grafo1)
+
+# Fazendo o histograma da metrica - proximidade
+proximidade <- closeness(grafo1)
+hist(proximidade)
+
+# Obtendo vertice com maior proximidade
+maior_proximidade <- max(proximidade)
+maior_proximidade
+
+# Identificação e exibiçao do vertice de maior proximidade
+vertice_de_maior_proximidade <- which(proximidade==maior_proximidade)
+vertice_de_maior_proximidade
+
+# Obtendo vertice com menor proximidade
+menor_proximidade <- min(proximidade)
+menor_proximidade
+
+# Identificação e exibição do vertice de maior proximidade
+vertice_de_menor_proximidade <- which(proximidade==menor_proximidade)
+vertice_de_menor_proximidade
+
+# Fazendo o calculo da intermediação dos vertices de um grafo
+intermediacaoVertices = betweenness(grafo1)
+intermediacaoVertices
+
+# Fazendo o histograma da metrica - intermediacao vertices
+intermediacaoVertices <- betweenness(grafo1)
+hist(intermediacaoVertices)
+
+# Maior intermediação
+maiorIntermediacaoVertices <- max(intermediacaoVertices)
+maiorIntermediacaoVertices 
+
+# Obtendo o vertice que possui a maior intermediacao
+verticeDeMaiorIntermediacao <- which(intermediacaoVertices==maiorIntermediacaoVertices)
+verticeDeMaiorIntermediacao
+
+# Menor intermediação do vertice
+menorIntermediacaoVertices <- min(intermediacaoVertices)
+menorIntermediacaoVertices 
+
+# Obtendo o vertice que possui a menor intermediacao
+verticeDeMenorIntermediacao <- which(intermediacaoVertices==menorIntermediacaoVertices)
+verticeDeMenorIntermediacao
+
+# Calculando a intermediaçao das arestas
+intermediacaoArestas = edge.betweenness(grafo1)
+
+# Fazendo o histograma da metrica - intermediacao arestas
+intermediacaoArestas <- edge.betweenness(grafo1)
+hist(intermediacaoArestas)
+
+# Maior intermediaçao das arestas
+maiorIntermediacaoArestas <- max(intermediacaoArestas)
+maiorIntermediacaoArestas
+
+# Comando E lista as arestas com seus rotulos
+E(grafo1)
+
+# Obtendo aresta que possui maior intermediacao
+arestaDeMaiorIntermediacao <- which(intermediacaoArestas==maiorIntermediacaoArestas)
+arestaDeMaiorIntermediacao
+
+# Menor intermediaçao das arestas
+menorIntermediacaoArestas <- min(intermediacaoArestas)
+menorIntermediacaoArestas
+
+# Comando E lista as arestas com seus rotulos
+E(grafo1)
+
+# Obtendo vértice que possui menor intermediacao
+arestaDeMenorIntermediacao <- which(intermediacaoArestas==menorIntermediacaoArestas)
+arestaDeMenorIntermediacao
+
+# Distancia entre os vertices do grafo
+distancia <- distances(grafo1)
+
+# Fazendo o histograma da metrica - distancia
+hist(distancia)
+
+# Maior distancia do grafo
+maximo <- max(distancia)
+
+# Menor distancia
+minimo <- min(distancia)
+
+# Fazendo o calculo do diametro 
+diameter(grafo1)
+diametro <- diameter(grafo1)
+diametro
