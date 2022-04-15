@@ -1,0 +1,42 @@
+# Maria Helena Siqueira dos Santos 
+
+#Construção de um grafo a partir de uma matriz de adjacencia
+
+#instalação da biblioteca 'igraph'
+
+install.packages('igraph')
+
+#abrindo a biblioteca 'igraph'
+
+library(igraph)
+
+#escolhendo o arquivo csv
+
+matriz1 <- read.table(row.names=1,file=file.choose(),header = TRUE,sep = ';')
+
+#exibição da matriz de adjacencia
+
+matriz1
+
+#ajuste de tabela para um formato de matriz
+
+matriz1 <- as.matrix(matriz1)
+
+#criando um grafo a partir de uma matriz de adjacencia
+
+grafo1 <- graph.adjacency(matriz1, mode='undirected', weighted=TRUE)
+
+#plotando o grafo na tela utilizando o comando tkplot
+
+tkplot(grafo1)
+
+#fazendo o calculo do grau de um grafo
+
+degree(grafo1)
+
+#fazendo o calculo de proximidade de um grafo
+
+closeness(grafo1)
+
+   
+    
